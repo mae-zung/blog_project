@@ -1,11 +1,10 @@
-const Router = require('koa-router');
-const api = new Router();
-const posts = require('./posts');
+import Router from 'koa-router';
+import posts from './posts';
+import auth from './auth';
 
-api.get('/test', (ctx) => {
-  ctx.body = 'test 성공';
-});
+const api = new Router();
 
 api.use('/posts', posts.routes());
+api.use('/auth', auth.routes());
 
-module.exports = api;
+export default api;
